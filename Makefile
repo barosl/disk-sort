@@ -2,9 +2,15 @@ CFLAGS = -O3 -Wall -Werror -Wno-unused-result
 
 STRIP = strip
 
-disk-sort: src/main.o src/str.o src/sort.o src/clock.o
+NAME = disk-sort
+OBJS = src/main.o src/str.o src/sort.o src/clock.o
+
+.PHONY: c clean
+
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $+
 	$(STRIP) $@
 
+c: clean
 clean:
-	rm -f disk-sort src/*.o
+	rm -f $(NAME) src/*.o
