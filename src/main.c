@@ -9,6 +9,7 @@
 #include <stdlib.h>
 
 #define MAX_NAME_LEN 200
+#define INTERFACE_TYPE 0 /* 0 for fopen, 1 for open, 2 for mmap, 3 for malloc */
 
 typedef struct {
 	char name[MAX_NAME_LEN+1];
@@ -156,8 +157,6 @@ static FILE *uniq(const char *fpath_in, const char *fpath_out) {
 
 	return fout;
 }
-
-#define INTERFACE_TYPE 3
 
 static int process(const char *fpath_bin, const char *fpath_uniq, const char *fpath_text) {
 #if INTERFACE_TYPE == 0
